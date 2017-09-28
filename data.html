@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Challenge 6</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+
+  <script>
+    var dataReceived;
+
+    function ajaxSimulate(id, cb) {
+      var database = ['Aaron', 'Barbara', 'Chris'];
+      var data = database[id];
+      setTimeout(cb(data), 0);
+      // console.log(dataReceived);
+    }
+
+    const printData = data => console.log(data);
+    const storeData = data => {
+      dataReceived = data;
+      // console.log(dataReceived);
+    }
+
+    // ajaxSimulate(0, printData);
+    ajaxSimulate(1, storeData);
+    console.log(dataReceived);
+  </script>
+</body>
+</html>

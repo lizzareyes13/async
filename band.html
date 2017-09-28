@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Challenge 7</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <div id="ch2"></div>
+  <ul id="ch3"></ul>
+  <h3>US Events for Sting</h3>
+  <ul id="ch4"></ul>
+
+  <script>
+    fetch('https://rest.bandsintown.com/artists/sting/?app_id=jshp', {
+      method: 'get'
+    }).then(function(response) {
+      var div = document.getElementById('ch2');
+      div.innerHTML = response.url;
+    }).catch(function(err) {
+      console.log('Error: ', err);
+    });
+
+    fetch('https://rest.bandsintown.com/artists/sting/events/?app_id=jshp', {
+      method: 'get'
+    })
+      .then(response => response.json())
+      .then(function(data) {
+        data.map(obj => {
+          var ul = document.getElementById('ch3');
+          var li = document.createElement('li');
+          li.appendChild(document.createTextNode(obj.venue.name))
+          ul.appendChild(li);
+          if (obj.venue.country === 'United States') {
+            var ul = document.getElementById('ch4');
+            var li = document.createElement('li');
+            li.appendChild(document.createTextNode(obj.venue.name))
+            ul.appendChild(li);
+          }
+        })
+    }).catch(function(err) {
+      console.log('Error: ', err);
+    });
+  </script>
+</body>
+</html>

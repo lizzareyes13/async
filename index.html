@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Challenge 5</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <button type="button" id="activate">Button 1</button>
+  <button type="button" id="color">Button 2</button>
+
+  <script>
+    function changeColor() {
+      console.log('Clicked # 2');
+      if (document.body.style.backgroundColor === 'rgb(221, 238, 255)') {
+        document.body.style.backgroundColor = 'rgb(255, 238, 221)';
+      } else {
+        document.body.style.backgroundColor = 'rgb(221, 238, 255)';
+      }
+
+      return false;
+    }
+
+    function logOut() {
+      console.log('Clicked button 1');
+      const bt2 = document.getElementById('color');
+      bt2.addEventListener('click', changeColor, false);
+
+      return false;
+    }
+
+    document.body.style.backgroundColor = 'rgb(221, 238, 255)';
+    const bt1 = document.getElementById('activate');
+    bt1.addEventListener('click', logOut, false);
+  </script>
+</body>
+</html>
